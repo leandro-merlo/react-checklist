@@ -5,6 +5,7 @@ import Home from './HomeComponent'
 import Home123 from './Home123Component'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Insert from './components/Insert'
 
 export default class App extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ export default class App extends Component {
           <Router>
             <Route path="/" exact component={ Home }></Route>
             <Route path="/123" component={ Home123 }></Route>
+            <Route path="/add" component={ Insert }></Route>
           </Router>
         </div>
         <Footer />
