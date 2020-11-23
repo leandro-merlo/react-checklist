@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 // import { Button } from 'reactstrap'
-import Home from './HomeComponent'
-import Home123 from './Home123Component'
+import Home from './components/Home'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Insert from './components/Insert'
@@ -19,7 +18,6 @@ export default class App extends Component {
         <div className="container">
           <Router>
             <Route path="/" exact component={ Home }></Route>
-            <Route path="/123" component={ Home123 }></Route>
             <Route path="/add" component={ Insert }></Route>
           </Router>
         </div>
