@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Table, Badge } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import Counter from './../components/Counter'
 
 export default class Home extends Component {
 
@@ -44,6 +45,10 @@ export default class Home extends Component {
                         }
                     </tbody>
                 </Table>
+                <div className="container">
+                    <hr/>
+                    <Counter data={ data }/>
+                </div>
             </div>
         );
     }
