@@ -7,10 +7,18 @@ export default class Insert extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: '',
             name: '',
             check: false,
             data: []
         }
+    }
+
+    componentDidMount() {
+        const data = JSON.parse(localStorage.getItem('data'))
+        this.setState({
+            data: data
+        })
     }
 
     onChange = ({ target }) => {
@@ -23,11 +31,17 @@ export default class Insert extends Component {
 
     onClick = async (event) => {
         let { data, name, check } = this.state;
-        let newData = [ ...data, {name, check} ];
+        let id = this._generateRandomId();
+        data.push({ id, name, check });
         await this.setState({
-            data: newData
+            data: data
         });
+        console.log(this.state.data);
         localStorage.setItem('data', JSON.stringify(this.state.data));
+    }
+
+    _generateRandomId = () => {
+        return Math.random().toString(24).substr(2, 10);
     }
 
     render(){
