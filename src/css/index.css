@@ -1,0 +1,19 @@
+.bg-navbar-custom {
+    background: rgb(139, 232, 255);
+}
+
+.title {
+    font-size: 3em;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.counter > p {
+    display: inline-block;
+}
+
+.counter > p > span {
+    color: rgb(49, 149, 156);
+}

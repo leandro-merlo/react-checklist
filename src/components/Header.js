@@ -19,13 +19,13 @@ export default class Header extends Component {
     render(){
         return (
             <div>
-                <Navbar color="light" expand="md">
+                <Navbar className="bg-navbar-custom" expand="md">
                     <NavbarBrand>Checklist</NavbarBrand>
                     <NavbarToggler onClick={ this.toggle }></NavbarToggler>
                     <Collapse isOpen={ this.state.open } navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="/">HOME</NavLink>
+                                <NavLink href="/add">Novo</NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>

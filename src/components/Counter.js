@@ -11,10 +11,9 @@ export default class Counter extends Component {
         const lenghtOfYes = data.filter(item => item.check === true).length;
         const lenghtOfNo = data.filter(item => item.check === false).length;
         return (
-            <div>
-                <p>Total: { data.length }</p>
-                <p>Total de Sim: { lenghtOfYes }</p>
-                <p>Total de Não: { lenghtOfNo }</p>
+            <div className="counter">
+                <p className="mr-4"><span>{ data.length }</span> Itens</p>
+                <p><span>{ lenghtOfYes }</span> Finalizados</p>
             </div>
         );
     }

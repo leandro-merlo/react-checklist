@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import '@mdi/font/css/materialdesignicons.min.css'
+import 'pretty-checkbox/dist/pretty-checkbox.min.css'
 
 ReactDOM.render(
   // <React.StrictMode>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Table, Badge } from 'reactstrap'
+import { Row, Col, ListGroup, ListGroupItem } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import Counter from './../components/Counter'
+import Checkbox from './../components/Checkbox'
 
 export default class Home extends Component {
 
@@ -18,7 +19,7 @@ export default class Home extends Component {
         })
     }
 
-    onCheckItem = (item) => {
+    onCheckItem = ({item}) => {
         const { data } = this.state;
         const index = data.indexOf(item);
         console.log(index);
@@ -33,33 +34,30 @@ export default class Home extends Component {
         const { data } = this.state;
         return (
             <div>
+                <Row className="text-center">
+                    <Col>
+                        <h1 className="title mt-4" >Checklist</h1>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col className="text-center"> 
+                        <Counter data={ data }/>                   
+                    </Col>
+                </Row>
                 <Link className="btn btn-primary mb-3 mt-3" to="/add">Novo Item</Link>
-                <Table>
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Marcado?</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            data.map((item, index) => (
-                                <tr key={index}>
-                                    <td>{ item.name}</td>
-                                    <td>
-                                        { item.check ? 
-                                            <Badge color='success' style={{ cursor: "pointer"}} onClick={ () => this.onCheckItem(item)}>Sim</Badge> :
-                                            <Badge color='danger' style={{ cursor: "pointer"}}  onClick={ () => this.onCheckItem(item)}>Não</Badge>}                                    
-                                    </td>
-                                </tr>                                
-                            ))
-                        }
-                    </tbody>
-                </Table>
-                <div className="container">
-                    <hr/>
-                    <Counter data={ data }/>
-                </div>
+                <Row>
+                    <Col>
+                        <ListGroup>
+                            {
+                                data.map((item, index) => (
+                                    <ListGroupItem key={ index }>
+                                        <Checkbox label={ item.name } item={ item } onChange={ this.onCheckItem }/> 
+                                    </ListGroupItem>
+                                ))
+                            }                                    
+                        </ListGroup>
+                    </Col>
+                </Row>
             </div>
         );
     }
