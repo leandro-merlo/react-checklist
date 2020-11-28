@@ -9,13 +9,38 @@ export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            search: '',
+            filtered: []
         }
     }
 
     componentDidMount() {
         this.setState({
-            data: JSON.parse(localStorage.getItem('data')) || []
+            data: JSON.parse(localStorage.getItem('data')) || [],
+            filtered: JSON.parse(localStorage.getItem('data')) || []
+        })
+    }
+
+    onChange = ({target}) => {
+        const { data } = this.state;
+        let {value} = target;
+        let currentList = [];
+        let filteredList = [];
+
+        if (value !== "") {
+            currentList = data;
+            filteredList = currentList.filter(({name})=>{
+                const itemNorm = name.toLowerCase();
+                const filterNorm = value.toLowerCase();
+                return itemNorm.includes(filterNorm);
+            });
+        } else {
+            filteredList = data;
+        }
+        this.setState({
+            search: value,
+            filtered: filteredList
         })
     }
 
@@ -27,8 +52,6 @@ export default class Home extends Component {
             this.setState({data: data});
             localStorage.setItem('data', JSON.stringify(data));
         }
-        console.log(item)
-        console.log(index)
     }
 
     onRemoveItem = (item) => {
@@ -42,7 +65,8 @@ export default class Home extends Component {
     }
 
     render(){
-        const { data } = this.state;
+        const data = this.state.filtered;
+        let { search } = this.state;
         return (
             <div>
                 <Row className="text-center">
@@ -55,6 +79,11 @@ export default class Home extends Component {
                         <Counter data={ data }/>                   
                     </Col>
                 </Row>
+                <Row>
+                    <Col className="search"> 
+                        <input type="text" className="form-control" name="search" placeholder="Filtrar pelo nome do item..." value={ search } onChange={ this.onChange }/>
+                    </Col>
+                </Row>                
                 <Link className="btn btn-primary mb-3 mt-3" to="/add">Novo Item</Link>
                 <Row>
                     <Col>
