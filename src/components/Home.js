@@ -22,9 +22,20 @@ export default class Home extends Component {
     onCheckItem = ({item}) => {
         const { data } = this.state;
         const index = data.indexOf(item);
-        console.log(index);
         if (index >= 0) {
             data[index] = { ...item, check: !item.check };
+            this.setState({data: data});
+            localStorage.setItem('data', JSON.stringify(data));
+        }
+        console.log(item)
+        console.log(index)
+    }
+
+    onRemoveItem = (item) => {
+        const { data } = this.state;
+        const index = data.indexOf(item);
+        if (index >= 0) {
+            data.splice(index, 1);
             this.setState({data: data});
             localStorage.setItem('data', JSON.stringify(data));
         }
@@ -52,6 +63,9 @@ export default class Home extends Component {
                                 data.map((item, index) => (
                                     <ListGroupItem key={ index }>
                                         <Checkbox label={ item.name } item={ item } onChange={ this.onCheckItem }/> 
+                                        <div className="delete" onClick={ () => this.onRemoveItem(item) }>
+                                            <i className="mdi mdi-trash-can-outline"></i>
+                                        </div>
                                     </ListGroupItem>
                                 ))
                             }                                    

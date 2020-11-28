@@ -29,7 +29,7 @@ export default class Insert extends Component {
             name = target.name;
     
         } else {
-            value = item.check;
+            value = !item.check;
             name = 'check';    
         }     
         this.setState({

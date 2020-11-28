@@ -4,24 +4,24 @@ export default class Checkbox extends Component {
 
     constructor(props){
         super(props);
-        this.state = {
-            label: props.label,
-            item: props.item
-        }
+        // this.state = {
+        //     label: props.label,
+        //     item: props.item
+        // }
     }
 
     onCheck = () => {
-        const { onChange } = this.props;
-        const { item } = this.state;
-        item.check = !item.check;
-        this.setState = {
-            item: item
-        }
+        const { onChange, item } = this.props;
+        // const { item } = this.state;
+        // item.check = !item.check;
+        // this.setState = {
+        //     item: item
+        // }
         onChange({item: item})
     } 
 
     render(){
-        const { item, label } = this.state
+        const { item, label } = this.props;
         let cssClass = "pretty p-switch";
         let stateClass = "state"
         if ( item.check ) {

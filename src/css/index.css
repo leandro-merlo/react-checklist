@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap');
+html, body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Roboto', sans-serif;    
+}
+
 .bg-navbar-custom {
     background: rgb(139, 232, 255);
 }
@@ -16,4 +25,10 @@
 
 .counter > p > span {
     color: rgb(49, 149, 156);
+}
+
+.delete {
+    float: right;
+    padding: 0 1em;
+    cursor: pointer;
 }
